@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head> </head>
+  <body>
+    <script>
+      async function getTopics() {
+        if (
+          "browsingTopics" in document &&
+          document.featurePolicy.allowsFeature("browsing-topics")
+        ) {
+          try {
+            const topics = await document.browsingTopics();
+            if (topics.length > 0) {
+              for (const topic of topics) {
+                console.log(topic.topic);
+              }
+            } else {
+              console.log("there are no topics");
+            }
+          } catch (error) {
+            console.log("exception with browsing topics");
+          }
+        } else {
+          console.log(
+            "document.browsingTopics() is not supported on this page"
+          );
+        }
+      }
+
+      const intervalId = setInterval(getTopics, 1000);
+    </script>
+  </body>
+</html>
