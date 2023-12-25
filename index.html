@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head> </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document Browsing Topics</title>
+  </head>
   <body>
-    <script>
-      console.log("ページの機能ポリシー：");
-      console.log(document.featurePolicy.allowsFeature("browsing-topics"));
-      // トピックの取得
-      const topics = await document.browsingTopics();
+    <script type="module">
+      import { document } from "https://unpkg.com/@google/topics-api@latest/browser/dist/browser-module.js";
 
-      // トピックの表示
-      for (const topic of topics) {
-      console.log(topic.topicName);
+      async function getTopics() {
+        const topics = await document.browsingTopics();
+        console.log(topics);
       }
 
-
-      const intervalId = setInterval(getTopics, 1000);
+      getTopics();
     </script>
   </body>
 </html>
