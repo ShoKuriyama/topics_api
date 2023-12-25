@@ -3,6 +3,8 @@
   <head> </head>
   <body>
     <script>
+      console.log("ページの機能ポリシー：");
+      console.log(document.featurePolicy.allowsFeature("browsing-topics"));
       async function getTopics() {
         if (
           "browsingTopics" in document &&
